@@ -1,0 +1,34 @@
+{{>partials/header}}
+
+<h2>Pesquisa de Usuário</h2>
+<form action="/pesquisa" method="GET">
+    <input type="text" name="termo" placeholder="Digite o ID ou Nome">
+    <button type="submit">Buscar</button>
+</form>
+
+{{#mensagem}}
+    <p>{{mensagem}}</p>
+{{/mensagem}}
+
+{{#usuarios}}
+    <ul>
+        <strong>ID:</strong> {{id_cliente}} <br>
+            <strong>Nome:</strong> {{nome}} <br>
+            <strong>Email:</strong> {{email}} <br>
+            <strong>Endereço:</strong> {{endereco}} <br>
+            <strong>Bairro:</strong> {{bairro}} <br>
+            <strong>Cidade:</strong> {{cidade}} <br>
+            <strong>Estado:</strong> {{estado}} <br>
+            <strong>CEP:</strong> {{cep}} <br>
+            <strong>Telefone Residencial:</strong> {{tel_res}} <br>
+            <strong>Celular:</strong> {{telefone}} <br>
+            <strong>Telefone de Emergência:</strong> {{tel_emergencia}} <br>
+            <strong>Contato:</strong> {{contato}} <br>
+            <strong>Data de Nascimento:</strong> {{data_nascimento}} <br>
+            <strong>Profissão:</strong> {{profissao}} <br>
+            <strong>Sexo:</strong> {{sexo}}
+    </ul>
+{{/usuarios}}
+
+
+{{>partials/footer}}

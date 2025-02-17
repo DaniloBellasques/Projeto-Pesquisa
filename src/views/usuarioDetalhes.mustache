@@ -1,0 +1,14 @@
+{{>partials/header}}
+
+<div class="container">
+    <h2>Detalhes do Usuário</h2>
+    <p><strong>ID:</strong> {{usuario.id_cliente}}</p>
+    <p><strong>Nome:</strong> {{usuario.nome}}</p>
+    <p><strong>Email:</strong> {{usuario.email}}</p>
+    <p><strong>Telefone:</strong> {{usuario.telefone}}</p>
+    <p><strong>Endereço:</strong> {{usuario.endereco}}, {{usuario.cidade}} - {{usuario.estado}}</p>
+
+    <a href="/pesquisa">Voltar para pesquisa</a>
+</div>
+
+{{>partials/footer}}
