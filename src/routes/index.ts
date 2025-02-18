@@ -1,5 +1,11 @@
 import { Router } from 'express';
+import { sequelize } from '../instances/mysql';
 import * as usuarioController from '../controllers/usuarioController';
+import '../models/associacao'; // Garante que as associações sejam carregadas antes do sync
+
+sequelize.sync({ alter: true }) // `force: true` recria as tabelas, cuidado!
+    .then(() => console.log('Banco de dados sincronizado com sucesso!'))
+    .catch((error) => console.error('Erro ao sincronizar o banco de dados:', error));
 
 const router = Router();
 

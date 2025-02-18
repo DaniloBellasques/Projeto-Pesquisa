@@ -70,7 +70,7 @@ let formData3: {
     Reumatismo?: boolean;
     Hanseniase?: boolean;
     Cirurgia_MMII?: boolean;
-    Marca_Passo?: boolean;
+    Marca_passo?: boolean;
     Hipertensao?: string;
     Insulina?: string;
     Dieta_Hidrica?: string;
@@ -95,7 +95,7 @@ let formData4: {
     Martelo_D?: boolean;
     Queda_Metatarso_E?: boolean;
     Queda_Metatarso_D?: boolean;
-    Tipo_Marcha?: string;
+    Tipo_Marcha?: 'Normal' | 'Pato' | 'Arrastada'
     Joelho?: string;
     Articulacao?: string;
     Sensibilidade_Dor?: string;
@@ -104,16 +104,16 @@ let formData4: {
 
 let formData5: {
     id_cliente?: number;
-    PD_halux?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PD_2?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PD_3?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PD_4?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PD_5?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PE_halux?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PE_2?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PE_3?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PE_4?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
-    PE_5?: 'Normal' | 'Involuído' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PD_halux?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PD_2?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PD_3?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PD_4?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PD_5?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PE_halux?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PE_2?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PE_3?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PE_4?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
+    PE_5?: 'Normal' | 'Involuta' | 'Telha' | 'Funil' | 'Gancho' | 'Torquês' | 'Caracol' | 'Cunha';
     Onicoatrofia?: boolean;
     Onicocriptose?: boolean;
     Onicorrexe?: boolean;
@@ -313,7 +313,7 @@ export const etapa3Post = (req: Request, res: Response) => {
         Reumatismo: req.body.Reumatismo,
         Hanseniase: req.body.Hanseniase,
         Cirurgia_MMII: req.body.Cirurgia_MMII,
-        Marca_Passo: req.body.Marca_Passo, // <-- GARANTIR QUE ESSE NOME ESTÁ IGUAL AO FORMULÁRIO
+        Marca_passo: req.body.Marca_passo, // <-- GARANTIR QUE ESSE NOME ESTÁ IGUAL AO FORMULÁRIO
         Hipotensao: req.body.Hipotensao,
         Insulina: req.body.Insulina,
         Dieta_Hidrica: req.body.Dieta_Hidrica,
@@ -574,16 +574,32 @@ export const pesquisarUsuario = async (req: Request, res: Response) => {
         let usuarios;
 
         if (!isNaN(Number(termo))) {
-            // Se for um número, busca por ID exato
+            // Se for um número, busca por ID exato e inclui todas as etapas
             usuarios = await Etapa1.findAll({
-                where: { id_cliente: Number(termo) }
+                where: { id_cliente: Number(termo) },
+                include: [
+                    { model: Etapa2, as: 'dados_gerais', required: false },
+                    { model: Etapa3, as: 'dadosclinicos', required: false },
+                    { model: Etapa4, as: 'alteracoeslesoespes', required: false },
+                    { model: Etapa5, as: 'formato_unhas', required: false },
+                    { model: Etapa6, as: 'alteracoeslesoes', required: false }
+                ]
             });
         } else {
-            // Se for texto, pesquisa pelo nome usando LIKE
+            // Se for texto, pesquisa pelo nome usando LIKE e inclui todas as etapas
             usuarios = await Etapa1.findAll({
-                where: { nome: { [Op.like]: `%${termo}%` } }
+                where: { nome: { [Op.like]: `%${termo}%` } },
+                include: [
+                    { model: Etapa2, as: 'dados_gerais', required: false },
+                    { model: Etapa3, as: 'dadosclinicos', required: false },
+                    { model: Etapa4, as: 'alteracoeslesoespes', required: false },
+                    { model: Etapa5, as: 'formato_unhas', required: false },
+                    { model: Etapa6, as: 'alteracoeslesoes', required: false }
+                ]
             });
         }
+
+        console.log(JSON.stringify(usuarios, null, 2)); // Verifica no console se os dados estão vindo corretamente
 
         return res.render('pesquisa', { usuarios, mensagem: usuarios.length ? '' : 'Nenhum usuário encontrado.' });
 
@@ -592,6 +608,7 @@ export const pesquisarUsuario = async (req: Request, res: Response) => {
         res.status(500).send('Erro interno ao buscar usuário.');
     }
 };
+
 
 export const detalhesUsuario = async (req: Request, res: Response) => {
     try {

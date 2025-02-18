@@ -15,7 +15,7 @@ export interface Etapa4Instance extends Model {
     Martelo_E: boolean;
     Queda_Metatarso_D: boolean;
     Queda_Metatarso_E: boolean;
-    Tipo_Marcha: 'Normal' | 'Pato' | 'Arrastada';
+    Tipo_Marcha: 'Normal' | 'Patologica' | 'Arrastada';
     Joelho: 'Normal' | 'Valgo' | 'Varo';
     Articulacao: 'Retrope' | 'Choto';
     Sensibilidade_Dor: 'Diminuída' | 'Normal' | 'Aumentada';
@@ -81,7 +81,7 @@ export const Etapa4 = sequelize.define<Etapa4Instance>('Etapa4', {
         allowNull: true
     },
     Tipo_Marcha: {
-        type: DataTypes.ENUM('Normal', 'Pato', 'Arrastada'),
+        type: DataTypes.ENUM('Normal', 'Patologica', 'Arrastada'),
         allowNull: true
     },
     Marcha_Descricao:{

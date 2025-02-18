@@ -11,24 +11,155 @@
 {{/mensagem}}
 
 {{#usuarios}}
-    <ul>
-        <strong>ID:</strong> {{id_cliente}} <br>
-            <strong>Nome:</strong> {{nome}} <br>
-            <strong>Email:</strong> {{email}} <br>
-            <strong>Endereço:</strong> {{endereco}} <br>
-            <strong>Bairro:</strong> {{bairro}} <br>
-            <strong>Cidade:</strong> {{cidade}} <br>
-            <strong>Estado:</strong> {{estado}} <br>
-            <strong>CEP:</strong> {{cep}} <br>
-            <strong>Telefone Residencial:</strong> {{tel_res}} <br>
-            <strong>Celular:</strong> {{telefone}} <br>
-            <strong>Telefone de Emergência:</strong> {{tel_emergencia}} <br>
-            <strong>Contato:</strong> {{contato}} <br>
-            <strong>Data de Nascimento:</strong> {{data_nascimento}} <br>
-            <strong>Profissão:</strong> {{profissao}} <br>
-            <strong>Sexo:</strong> {{sexo}}
-    </ul>
-{{/usuarios}}
+    <h2>Resultados da Pesquisa</h2>
 
+<ul>
+    {{#usuarios}}
+        <li>
+            <h3>Dados Pessoais (Etapa 1)</h3>
+            <h3>Dados Pessoais (Etapa 1)</h3>
+<strong>ID:</strong> {{#id_cliente}}{{id_cliente}}{{/id_cliente}}{{^id_cliente}}Não informado{{/id_cliente}} <br>
+<strong>Nome:</strong> {{#nome}}{{nome}}{{/nome}}{{^nome}}Não informado{{/nome}} <br>
+<strong>Email:</strong> {{#email}}{{email}}{{/email}}{{^email}}Não informado{{/email}} <br>
+<strong>Endereço:</strong> {{#endereco}}{{endereco}}{{/endereco}}{{^endereco}}Não informado{{/endereco}} <br>
+<strong>Bairro:</strong> {{#bairro}}{{bairro}}{{/bairro}}{{^bairro}}Não informado{{/bairro}} <br>
+<strong>Cidade:</strong> {{#cidade}}{{cidade}}{{/cidade}}{{^cidade}}Não informado{{/cidade}} <br>
+<strong>Estado:</strong> {{#estado}}{{estado}}{{/estado}}{{^estado}}Não informado{{/estado}} <br>
+<strong>CEP:</strong> {{#cep}}{{cep}}{{/cep}}{{^cep}}Não informado{{/cep}} <br>
+<strong>Telefone Residencial:</strong> {{#tel_res}}{{tel_res}}{{/tel_res}}{{^tel_res}}Não informado{{/tel_res}} <br>
+<strong>Celular:</strong> {{#telefone}}{{telefone}}{{/telefone}}{{^telefone}}Não informado{{/telefone}} <br>
+<strong>Telefone de Emergência:</strong> {{#tel_emergencia}}{{tel_emergencia}}{{/tel_emergencia}}{{^tel_emergencia}}Não informado{{/tel_emergencia}} <br>
+<strong>Contato:</strong> {{#contato}}{{contato}}{{/contato}}{{^contato}}Não informado{{/contato}} <br>
+<strong>Data de Nascimento:</strong> {{#data_nascimento}}{{data_nascimento}}{{/data_nascimento}}{{^data_nascimento}}Não informado{{/data_nascimento}} <br>
+<strong>Profissão:</strong> {{#profissao}}{{profissao}}{{/profissao}}{{^profissao}}Não informado{{/profissao}} <br>
+<strong>Sexo:</strong> {{#sexo}}{{sexo}}{{/sexo}}{{^sexo}}Não informado{{/sexo}} <br>
+
+
+            <h3>Saúde e Hábitos (Etapa 2)</h3>
+<h3>Saúde e Hábitos (Etapa 2)</h3>
+<strong>Queixa Principal:</strong> {{#dados_gerais.queixa_principal}}{{dados_gerais.queixa_principal}}{{/dados_gerais.queixa_principal}}{{^dados_gerais.queixa_principal}}Não informado{{/dados_gerais.queixa_principal}} <br>
+<strong>Frequenta Podólogo:</strong> {{#dados_gerais.frequenta_podologo}}{{dados_gerais.frequenta_podologo}}{{/dados_gerais.frequenta_podologo}}{{^dados_gerais.frequenta_podologo}}Não informado{{/dados_gerais.frequenta_podologo}} <br>
+<strong>Frequência ao Podólogo:</strong> {{#dados_gerais.frequencia_visita_podologo}}{{dados_gerais.frequencia_visita_podologo}}{{/dados_gerais.frequencia_visita_podologo}}{{^dados_gerais.frequencia_visita_podologo}}Não informado{{/dados_gerais.frequencia_visita_podologo}} <br>
+<strong>Uso de Medicamentos:</strong> {{#dados_gerais.uso_medicamento}}{{dados_gerais.uso_medicamento}}{{/dados_gerais.uso_medicamento}}{{^dados_gerais.uso_medicamento}}Não informado{{/dados_gerais.uso_medicamento}} <br>
+<strong>Tipo de Medicamento:</strong> {{#dados_gerais.tipo_medicamento}}{{dados_gerais.tipo_medicamento}}{{/dados_gerais.tipo_medicamento}}{{^dados_gerais.tipo_medicamento}}Não informado{{/dados_gerais.tipo_medicamento}} <br>
+<strong>Alérgico:</strong> {{#dados_gerais.alergico}}{{dados_gerais.alergico}}{{/dados_gerais.alergico}}{{^dados_gerais.alergico}}Não informado{{/dados_gerais.alergico}} <br>
+<strong>Substâncias Alérgicas:</strong> {{#dados_gerais.alergia_substancia}}{{dados_gerais.alergia_substancia}}{{/dados_gerais.alergia_substancia}}{{^dados_gerais.alergia_substancia}}Não informado{{/dados_gerais.alergia_substancia}} <br>
+<strong>Posição no Trabalho:</strong> {{#dados_gerais.posicao_trabalho}}{{dados_gerais.posicao_trabalho}}{{/dados_gerais.posicao_trabalho}}{{^dados_gerais.posicao_trabalho}}Não informado{{/dados_gerais.posicao_trabalho}} <br>
+<strong>Duração do Trabalho:</strong> {{#dados_gerais.duracao_trabalho}}{{dados_gerais.duracao_trabalho}}{{/dados_gerais.duracao_trabalho}}{{^dados_gerais.duracao_trabalho}}Não informado{{/dados_gerais.duracao_trabalho}} <br>
+<strong>Tempo em Pé:</strong> {{#dados_gerais.tempo_em_pe}}{{dados_gerais.tempo_em_pe}}{{/dados_gerais.tempo_em_pe}}{{^dados_gerais.tempo_em_pe}}Não informado{{/dados_gerais.tempo_em_pe}} <br>
+<strong>Tempo Sentado:</strong> {{#dados_gerais.tempo_sentado}}{{dados_gerais.tempo_sentado}}{{/dados_gerais.tempo_sentado}}{{^dados_gerais.tempo_sentado}}Não informado{{/dados_gerais.tempo_sentado}} <br>
+<strong>Tempo Caminhando:</strong> {{#dados_gerais.tempo_caminhando}}{{dados_gerais.tempo_caminhando}}{{/dados_gerais.tempo_caminhando}}{{^dados_gerais.tempo_caminhando}}Não informado{{/dados_gerais.tempo_caminhando}} <br>
+<strong>Número do Calçado:</strong> {{#dados_gerais.numero_calcado}}{{dados_gerais.numero_calcado}}{{/dados_gerais.numero_calcado}}{{^dados_gerais.numero_calcado}}Não informado{{/dados_gerais.numero_calcado}} <br>
+<strong>Tipo de Calçado Diário:</strong> {{#dados_gerais.tipo_calcado_diario}}{{dados_gerais.tipo_calcado_diario}}{{/dados_gerais.tipo_calcado_diario}}{{^dados_gerais.tipo_calcado_diario}}Não informado{{/dados_gerais.tipo_calcado_diario}} <br>
+<strong>Especificação do Calçado:</strong> {{#dados_gerais.tipo_calcado_qual}}{{dados_gerais.tipo_calcado_qual}}{{/dados_gerais.tipo_calcado_qual}}{{^dados_gerais.tipo_calcado_qual}}Não informado{{/dados_gerais.tipo_calcado_qual}} <br>
+<strong>Fumante:</strong> {{#dados_gerais.fumante}}{{dados_gerais.fumante}}{{/dados_gerais.fumante}}{{^dados_gerais.fumante}}Não informado{{/dados_gerais.fumante}} <br>
+<strong>Menstruação Regular:</strong> {{#dados_gerais.menstruacao}}{{dados_gerais.menstruacao}}{{/dados_gerais.menstruacao}}{{^dados_gerais.menstruacao}}Não informado{{/dados_gerais.menstruacao}} <br>
+<strong>Gestante:</strong> {{#dados_gerais.gestante}}{{dados_gerais.gestante}}{{/dados_gerais.gestante}}{{^dados_gerais.gestante}}Não informado{{/dados_gerais.gestante}} <br>
+<strong>Amamentando:</strong> {{#dados_gerais.amamentando}}{{dados_gerais.amamentando}}{{/dados_gerais.amamentando}}{{^dados_gerais.amamentando}}Não informado{{/dados_gerais.amamentando}} <br>
+<strong>Data da Última Menstruação:</strong> {{#dados_gerais.dum}}{{dados_gerais.dum}}{{/dados_gerais.dum}}{{^dados_gerais.dum}}Não informado{{/dados_gerais.dum}} <br>
+<strong>Prática de Atividade Física:</strong> {{#dados_gerais.pratica_atividade_fisica}}{{dados_gerais.pratica_atividade_fisica}}{{/dados_gerais.pratica_atividade_fisica}}{{^dados_gerais.pratica_atividade_fisica}}Não informado{{/dados_gerais.pratica_atividade_fisica}} <br>
+<strong>Frequência da Atividade Física:</strong> {{#dados_gerais.frequencia_atividade_fisica}}{{dados_gerais.frequencia_atividade_fisica}}{{/dados_gerais.frequencia_atividade_fisica}}{{^dados_gerais.frequencia_atividade_fisica}}Não informado{{/dados_gerais.frequencia_atividade_fisica}} <br>
+<strong>Esporte ou Atividade:</strong> {{#dados_gerais.esporte_atividade}}{{dados_gerais.esporte_atividade}}{{/dados_gerais.esporte_atividade}}{{^dados_gerais.esporte_atividade}}Não informado{{/dados_gerais.esporte_atividade}} <br>
+<strong>Tipo de Calçado para Esporte:</strong> {{#dados_gerais.tipo_calcado_esporte}}{{dados_gerais.tipo_calcado_esporte}}{{/dados_gerais.tipo_calcado_esporte}}{{^dados_gerais.tipo_calcado_esporte}}Não informado{{/dados_gerais.tipo_calcado_esporte}} <br>
+
+
+            <h3>Dados Clínicos (Etapa 3)</h3>
+            <strong>Osteoporose:</strong> {{#dadosclinicos.Osteoporose}}{{dadosclinicos.Osteoporose}}{{/dadosclinicos.Osteoporose}}{{^dadosclinicos.Osteoporose}}Não informado{{/dadosclinicos.Osteoporose}} <br>
+<strong>Quimioterapia/Radioterapia:</strong> {{#dadosclinicos.Quimioterapia_Radioterapia}}{{dadosclinicos.Quimioterapia_Radioterapia}}{{/dadosclinicos.Quimioterapia_Radioterapia}}{{^dadosclinicos.Quimioterapia_Radioterapia}}Não informado{{/dadosclinicos.Quimioterapia_Radioterapia}} <br>
+<strong>Antecedente Oncológico:</strong> {{#dadosclinicos.Antecedente_Oncologico}}{{dadosclinicos.Antecedente_Oncologico}}{{/dadosclinicos.Antecedente_Oncologico}}{{^dadosclinicos.Antecedente_Oncologico}}Não informado{{/dadosclinicos.Antecedente_Oncologico}} <br>
+<strong>Reumatismo:</strong> {{#dadosclinicos.Reumatismo}}{{dadosclinicos.Reumatismo}}{{/dadosclinicos.Reumatismo}}{{^dadosclinicos.Reumatismo}}Não informado{{/dadosclinicos.Reumatismo}} <br>
+<strong>Marca-passo:</strong> {{#dadosclinicos.Marca_passo}}{{dadosclinicos.Marca_passo}}{{/dadosclinicos.Marca_passo}}{{^dadosclinicos.Marca_passo}}Não informado{{/dadosclinicos.Marca_passo}} <br>
+<strong>Hipotensão:</strong> {{#dadosclinicos.Hipotensao}}{{dadosclinicos.Hipotensao}}{{/dadosclinicos.Hipotensao}}{{^dadosclinicos.Hipotensao}}Não informado{{/dadosclinicos.Hipotensao}} <br>
+<strong>Uso de Injetável:</strong> {{#dadosclinicos.Injetavel}}{{dadosclinicos.Injetavel}}{{/dadosclinicos.Injetavel}}{{^dadosclinicos.Injetavel}}Não informado{{/dadosclinicos.Injetavel}} <br>
+<strong>Problemas Renais:</strong> {{#dadosclinicos.Renal}}{{dadosclinicos.Renal}}{{/dadosclinicos.Renal}}{{^dadosclinicos.Renal}}Não informado{{/dadosclinicos.Renal}} <br>
+<strong>Hipotireoidismo:</strong> {{#dadosclinicos.Hipotireoidismo}}{{dadosclinicos.Hipotireoidismo}}{{/dadosclinicos.Hipotireoidismo}}{{^dadosclinicos.Hipotireoidismo}}Não informado{{/dadosclinicos.Hipotireoidismo}} <br>
+<strong>Cardiopatia:</strong> {{#dadosclinicos.Cardiopatia}}{{dadosclinicos.Cardiopatia}}{{/dadosclinicos.Cardiopatia}}{{^dadosclinicos.Cardiopatia}}Não informado{{/dadosclinicos.Cardiopatia}} <br>
+<strong>Hanseníase:</strong> {{#dadosclinicos.Hanseniase}}{{dadosclinicos.Hanseniase}}{{/dadosclinicos.Hanseniase}}{{^dadosclinicos.Hanseniase}}Não informado{{/dadosclinicos.Hanseniase}} <br>
+<strong>Epilepsia:</strong> {{#dadosclinicos.Epilepsia}}{{dadosclinicos.Epilepsia}}{{/dadosclinicos.Epilepsia}}{{^dadosclinicos.Epilepsia}}Não informado{{/dadosclinicos.Epilepsia}} <br>
+<strong>Hepatite:</strong> {{#dadosclinicos.Hepatite}}{{dadosclinicos.Hepatite}}{{/dadosclinicos.Hepatite}}{{^dadosclinicos.Hepatite}}Não informado{{/dadosclinicos.Hepatite}} <br>
+<strong>Hipertensão:</strong> {{#dadosclinicos.Hipertensao}}{{dadosclinicos.Hipertensao}}{{/dadosclinicos.Hipertensao}}{{^dadosclinicos.Hipertensao}}Não informado{{/dadosclinicos.Hipertensao}} <br>
+<strong>Cirurgia MMII:</strong> {{#dadosclinicos.Cirurgia_MMII}}{{dadosclinicos.Cirurgia_MMII}}{{/dadosclinicos.Cirurgia_MMII}}{{^dadosclinicos.Cirurgia_MMII}}Não informado{{/dadosclinicos.Cirurgia_MMII}} <br>
+<strong>Alterações Vasculares:</strong> {{#dadosclinicos.Alteracoes_Vasculares}}{{dadosclinicos.Alteracoes_Vasculares}}{{/dadosclinicos.Alteracoes_Vasculares}}{{^dadosclinicos.Alteracoes_Vasculares}}Não informado{{/dadosclinicos.Alteracoes_Vasculares}} <br>
+<strong>Uso de Insulina:</strong> {{#dadosclinicos.Insulina}}{{dadosclinicos.Insulina}}{{/dadosclinicos.Insulina}}{{^dadosclinicos.Insulina}}Não informado{{/dadosclinicos.Insulina}} <br>
+<strong>Dieta Hídrica:</strong> {{#dadosclinicos.Dieta_Hidrica}}{{dadosclinicos.Dieta_Hidrica}}{{/dadosclinicos.Dieta_Hidrica}}{{^dadosclinicos.Dieta_Hidrica}}Não informado{{/dadosclinicos.Dieta_Hidrica}} <br>
+<strong>Dieta Alimentar:</strong> {{#dadosclinicos.Dieta_Alimentar}}{{dadosclinicos.Dieta_Alimentar}}{{/dadosclinicos.Dieta_Alimentar}}{{^dadosclinicos.Dieta_Alimentar}}Não informado{{/dadosclinicos.Dieta_Alimentar}} <br>
+<strong>Uso de Medicação Oral:</strong> {{#dadosclinicos.Via_Oral}}{{dadosclinicos.Via_Oral}}{{/dadosclinicos.Via_Oral}}{{^dadosclinicos.Via_Oral}}Não informado{{/dadosclinicos.Via_Oral}} <br>
+<strong>Taxa Glicêmica:</strong> {{#dadosclinicos.Taxa_Glicemica}}{{dadosclinicos.Taxa_Glicemica}}{{/dadosclinicos.Taxa_Glicemica}}{{^dadosclinicos.Taxa_Glicemica}}Não informado{{/dadosclinicos.Taxa_Glicemica}} <br>
+
+
+            <h3>Alterações e Lesões (Etapa 4)</h3>
+<strong>Tipo de Pisada:</strong> {{#alteracoeslesoespes.Tipo_Pisada}}{{alteracoeslesoespes.Tipo_Pisada}}{{/alteracoeslesoespes.Tipo_Pisada}}{{^alteracoeslesoespes.Tipo_Pisada}}Não informado{{/alteracoeslesoespes.Tipo_Pisada}} <br>
+<strong>Flexível Direito:</strong> {{#alteracoeslesoespes.Flexivel_D}}Sim{{/alteracoeslesoespes.Flexivel_D}}{{^alteracoeslesoespes.Flexivel_D}}Não{{/alteracoeslesoespes.Flexivel_D}} <br>
+<strong>Flexível Esquerdo:</strong> {{#alteracoeslesoespes.Flexivel_E}}Sim{{/alteracoeslesoespes.Flexivel_E}}{{^alteracoeslesoespes.Flexivel_E}}Não{{/alteracoeslesoespes.Flexivel_E}} <br>
+<strong>Rigidez Direita:</strong> {{#alteracoeslesoespes.Rigido_D}}Sim{{/alteracoeslesoespes.Rigido_D}}{{^alteracoeslesoespes.Rigido_D}}Não{{/alteracoeslesoespes.Rigido_D}} <br>
+<strong>Rigidez Esquerda:</strong> {{#alteracoeslesoespes.Rigido_E}}Sim{{/alteracoeslesoespes.Rigido_E}}{{^alteracoeslesoespes.Rigido_E}}Não{{/alteracoeslesoespes.Rigido_E}} <br>
+<strong>Pé Espalmado Direito:</strong> {{#alteracoeslesoespes.Espalmado_D}}Sim{{/alteracoeslesoespes.Espalmado_D}}{{^alteracoeslesoespes.Espalmado_D}}Não{{/alteracoeslesoespes.Espalmado_D}} <br>
+<strong>Pé Espalmado Esquerdo:</strong> {{#alteracoeslesoespes.Espalmado_E}}Sim{{/alteracoeslesoespes.Espalmado_E}}{{^alteracoeslesoespes.Espalmado_E}}Não{{/alteracoeslesoespes.Espalmado_E}} <br>
+<strong>Dedo em Martelo Direito:</strong> {{#alteracoeslesoespes.Martelo_D}}Sim{{/alteracoeslesoespes.Martelo_D}}{{^alteracoeslesoespes.Martelo_D}}Não{{/alteracoeslesoespes.Martelo_D}} <br>
+<strong>Dedo em Martelo Esquerdo:</strong> {{#alteracoeslesoespes.Martelo_E}}Sim{{/alteracoeslesoespes.Martelo_E}}{{^alteracoeslesoespes.Martelo_E}}Não{{/alteracoeslesoespes.Martelo_E}} <br>
+<strong>Queda do Metatarso Direito:</strong> {{#alteracoeslesoespes.Queda_Metatarso_D}}Sim{{/alteracoeslesoespes.Queda_Metatarso_D}}{{^alteracoeslesoespes.Queda_Metatarso_D}}Não{{/alteracoeslesoespes.Queda_Metatarso_D}} <br>
+<strong>Queda do Metatarso Esquerdo:</strong> {{#alteracoeslesoespes.Queda_Metatarso_E}}Sim{{/alteracoeslesoespes.Queda_Metatarso_E}}{{^alteracoeslesoespes.Queda_Metatarso_E}}Não{{/alteracoeslesoespes.Queda_Metatarso_E}} <br>
+<strong>Tipo de Marcha:</strong> {{#alteracoeslesoespes.Tipo_Marcha}}{{alteracoeslesoespes.Tipo_Marcha}}{{/alteracoeslesoespes.Tipo_Marcha}}{{^alteracoeslesoespes.Tipo_Marcha}}Não informado{{/alteracoeslesoespes.Tipo_Marcha}} <br>
+<strong>Descrição da Marcha:</strong> {{#alteracoeslesoespes.Marcha_Descricao}}{{alteracoeslesoespes.Marcha_Descricao}}{{/alteracoeslesoespes.Marcha_Descricao}}{{^alteracoeslesoespes.Marcha_Descricao}}Não informado{{/alteracoeslesoespes.Marcha_Descricao}} <br>
+<strong>Alinhamento do Joelho:</strong> {{#alteracoeslesoespes.Joelho}}{{alteracoeslesoespes.Joelho}}{{/alteracoeslesoespes.Joelho}}{{^alteracoeslesoespes.Joelho}}Não informado{{/alteracoeslesoespes.Joelho}} <br>
+<strong>Alteração Articular:</strong> {{#alteracoeslesoespes.Articulacao}}{{alteracoeslesoespes.Articulacao}}{{/alteracoeslesoespes.Articulacao}}{{^alteracoeslesoespes.Articulacao}}Não informado{{/alteracoeslesoespes.Articulacao}} <br>
+<strong>Sensibilidade/Dor:</strong> {{#alteracoeslesoespes.Sensibilidade_Dor}}{{alteracoeslesoespes.Sensibilidade_Dor}}{{/alteracoeslesoespes.Sensibilidade_Dor}}{{^alteracoeslesoespes.Sensibilidade_Dor}}Não informado{{/alteracoeslesoespes.Sensibilidade_Dor}} <br>
+
+
+<h3>Formato das Unhas (Etapa 5)</h3>
+<strong>Formato do Halux Direito:</strong> {{#formato_unhas.PD_halux}}{{formato_unhas.PD_halux}}{{/formato_unhas.PD_halux}}{{^formato_unhas.PD_halux}}Não informado{{/formato_unhas.PD_halux}} <br>
+<strong>Formato do 2º Dedo Direito:</strong> {{#formato_unhas.PD_2}}{{formato_unhas.PD_2}}{{/formato_unhas.PD_2}}{{^formato_unhas.PD_2}}Não informado{{/formato_unhas.PD_2}} <br>
+<strong>Formato do 3º Dedo Direito:</strong> {{#formato_unhas.PD_3}}{{formato_unhas.PD_3}}{{/formato_unhas.PD_3}}{{^formato_unhas.PD_3}}Não informado{{/formato_unhas.PD_3}} <br>
+<strong>Formato do 4º Dedo Direito:</strong> {{#formato_unhas.PD_4}}{{formato_unhas.PD_4}}{{/formato_unhas.PD_4}}{{^formato_unhas.PD_4}}Não informado{{/formato_unhas.PD_4}} <br>
+<strong>Formato do 5º Dedo Direito:</strong> {{#formato_unhas.PD_5}}{{formato_unhas.PD_5}}{{/formato_unhas.PD_5}}{{^formato_unhas.PD_5}}Não informado{{/formato_unhas.PD_5}} <br>
+<strong>Formato do Halux Esquerdo:</strong> {{#formato_unhas.PE_halux}}{{formato_unhas.PE_halux}}{{/formato_unhas.PE_halux}}{{^formato_unhas.PE_halux}}Não informado{{/formato_unhas.PE_halux}} <br>
+<strong>Formato do 2º Dedo Esquerdo:</strong> {{#formato_unhas.PE_2}}{{formato_unhas.PE_2}}{{/formato_unhas.PE_2}}{{^formato_unhas.PE_2}}Não informado{{/formato_unhas.PE_2}} <br>
+<strong>Formato do 3º Dedo Esquerdo:</strong> {{#formato_unhas.PE_3}}{{formato_unhas.PE_3}}{{/formato_unhas.PE_3}}{{^formato_unhas.PE_3}}Não informado{{/formato_unhas.PE_3}} <br>
+<strong>Formato do 4º Dedo Esquerdo:</strong> {{#formato_unhas.PE_4}}{{formato_unhas.PE_4}}{{/formato_unhas.PE_4}}{{^formato_unhas.PE_4}}Não informado{{/formato_unhas.PE_4}} <br>
+<strong>Formato do 5º Dedo Esquerdo:</strong> {{#formato_unhas.PE_5}}{{formato_unhas.PE_5}}{{/formato_unhas.PE_5}}{{^formato_unhas.PE_5}}Não informado{{/formato_unhas.PE_5}} <br>
+
+<strong>Onicoatrofia:</strong> {{#formato_unhas.Onicoatrofia}}Sim{{/formato_unhas.Onicoatrofia}}{{^formato_unhas.Onicoatrofia}}Não{{/formato_unhas.Onicoatrofia}} <br>
+<strong>Onicocriptose:</strong> {{#formato_unhas.Onicocriptose}}Sim{{/formato_unhas.Onicocriptose}}{{^formato_unhas.Onicocriptose}}Não{{/formato_unhas.Onicocriptose}} <br>
+<strong>Onicorrexe:</strong> {{#formato_unhas.Onicorrexe}}Sim{{/formato_unhas.Onicorrexe}}{{^formato_unhas.Onicorrexe}}Não{{/formato_unhas.Onicorrexe}} <br>
+<strong>Granuloma:</strong> {{#formato_unhas.Granuloma}}Sim{{/formato_unhas.Granuloma}}{{^formato_unhas.Granuloma}}Não{{/formato_unhas.Granuloma}} <br>
+<strong>Onicogrifose:</strong> {{#formato_unhas.Onicogrifose}}Sim{{/formato_unhas.Onicogrifose}}{{^formato_unhas.Onicogrifose}}Não{{/formato_unhas.Onicogrifose}} <br>
+<strong>Onicolise:</strong> {{#formato_unhas.Onicolise}}Sim{{/formato_unhas.Onicolise}}{{^formato_unhas.Onicolise}}Não{{/formato_unhas.Onicolise}} <br>
+<strong>Onicofose:</strong> {{#formato_unhas.Onicofose}}Sim{{/formato_unhas.Onicofose}}{{^formato_unhas.Onicofose}}Não{{/formato_unhas.Onicofose}} <br>
+<strong>Psoríase Ungueal:</strong> {{#formato_unhas.Psoriase_ungueal}}Sim{{/formato_unhas.Psoriase_ungueal}}{{^formato_unhas.Psoriase_ungueal}}Não{{/formato_unhas.Psoriase_ungueal}} <br>
+<strong>Onicomicose:</strong> {{#formato_unhas.Onicomicose}}Sim{{/formato_unhas.Onicomicose}}{{^formato_unhas.Onicomicose}}Não{{/formato_unhas.Onicomicose}} <br>
+<strong>Outras Alterações:</strong> {{#formato_unhas.outras_alteracoes}}{{formato_unhas.outras_alteracoes}}{{/formato_unhas.outras_alteracoes}}{{^formato_unhas.outras_alteracoes}}Não informado{{/formato_unhas.outras_alteracoes}} <br>
+
+
+
+            <h3>Outras Alterações e Lesões (Etapa 6)</h3>
+         <strong>Bromidrose:</strong> {{#alteracoeslesoes.bromidrose}}Sim{{/alteracoeslesoes.bromidrose}}{{^alteracoeslesoes.bromidrose}}Não{{/alteracoeslesoes.bromidrose}} <br>
+<strong>Hidrose:</strong> {{#alteracoeslesoes.hidrose}}Sim{{/alteracoeslesoes.hidrose}}{{^alteracoeslesoes.hidrose}}Não{{/alteracoeslesoes.hidrose}} <br>
+<strong>Desidrose:</strong> {{#alteracoeslesoes.desidrose}}Sim{{/alteracoeslesoes.desidrose}}{{^alteracoeslesoes.desidrose}}Não{{/alteracoeslesoes.desidrose}} <br>
+<strong>Isquemia:</strong> {{#alteracoeslesoes.isquemia}}Sim{{/alteracoeslesoes.isquemia}}{{^alteracoeslesoes.isquemia}}Não{{/alteracoeslesoes.isquemia}} <br>
+<strong>Mal Perfurante:</strong> {{#alteracoeslesoes.mal_perfurante}}Sim{{/alteracoeslesoes.mal_perfurante}}{{^alteracoeslesoes.mal_perfurante}}Não{{/alteracoeslesoes.mal_perfurante}} <br>
+<strong>Edema:</strong> {{#alteracoeslesoes.edema}}Sim{{/alteracoeslesoes.edema}}{{^alteracoeslesoes.edema}}Não{{/alteracoeslesoes.edema}} <br>
+<strong>Tinea:</strong> {{#alteracoeslesoes.tinea}}Sim{{/alteracoeslesoes.tinea}}{{^alteracoeslesoes.tinea}}Não{{/alteracoeslesoes.tinea}} <br>
+<strong>Psoríase:</strong> {{#alteracoeslesoes.psoriase}}Sim{{/alteracoeslesoes.psoriase}}{{^alteracoeslesoes.psoriase}}Não{{/alteracoeslesoes.psoriase}} <br>
+<strong>Tungiase:</strong> {{#alteracoeslesoes.tungiase}}Sim{{/alteracoeslesoes.tungiase}}{{^alteracoeslesoes.tungiase}}Não{{/alteracoeslesoes.tungiase}} <br>
+<strong>Verruga Plantar:</strong> {{#alteracoeslesoes.verruga_plantar}}Sim{{/alteracoeslesoes.verruga_plantar}}{{^alteracoeslesoes.verruga_plantar}}Não{{/alteracoeslesoes.verruga_plantar}} <br>
+<strong>Calo Dorsal:</strong> {{#alteracoeslesoes.calo_dorsal}}Sim{{/alteracoeslesoes.calo_dorsal}}{{^alteracoeslesoes.calo_dorsal}}Não{{/alteracoeslesoes.calo_dorsal}} <br>
+<strong>Queratose:</strong> {{#alteracoeslesoes.querotose}}Sim{{/alteracoeslesoes.querotose}}{{^alteracoeslesoes.querotose}}Não{{/alteracoeslesoes.querotose}} <br>
+<strong>Calo Plantar:</strong> {{#alteracoeslesoes.calo_plantar}}Sim{{/alteracoeslesoes.calo_plantar}}{{^alteracoeslesoes.calo_plantar}}Não{{/alteracoeslesoes.calo_plantar}} <br>
+<strong>Hiperqueratose:</strong> {{#alteracoeslesoes.hiperqueratose}}Sim{{/alteracoeslesoes.hiperqueratose}}{{^alteracoeslesoes.hiperqueratose}}Não{{/alteracoeslesoes.hiperqueratose}} <br>
+<strong>Calo Interdigital:</strong> {{#alteracoeslesoes.calo_interdigital}}Sim{{/alteracoeslesoes.calo_interdigital}}{{^alteracoeslesoes.calo_interdigital}}Não{{/alteracoeslesoes.calo_interdigital}} <br>
+<strong>Perfusão Pé Direito:</strong> {{#alteracoeslesoes.perfusao_PD}}{{alteracoeslesoes.perfusao_PD}}{{/alteracoeslesoes.perfusao_PD}}{{^alteracoeslesoes.perfusao_PD}}Não informado{{/alteracoeslesoes.perfusao_PD}} <br>
+<strong>Perfusão Pé Esquerdo:</strong> {{#alteracoeslesoes.perfusao_PE}}{{alteracoeslesoes.perfusao_PE}}{{/alteracoeslesoes.perfusao_PE}}{{^alteracoeslesoes.perfusao_PE}}Não informado{{/alteracoeslesoes.perfusao_PE}} <br>
+<strong>Já teve Erisipela:</strong> {{#alteracoeslesoes.teve_erisipela}}Sim{{/alteracoeslesoes.teve_erisipela}}{{^alteracoeslesoes.teve_erisipela}}Não{{/alteracoeslesoes.teve_erisipela}} <br>
+<strong>Outras Alterações:</strong> {{#alteracoeslesoes.outras_alteracoes}}{{alteracoeslesoes.outras_alteracoes}}{{/alteracoeslesoes.outras_alteracoes}}{{^alteracoeslesoes.outras_alteracoes}}Não informado{{/alteracoeslesoes.outras_alteracoes}} <br>
+<strong>Comentários:</strong> {{#alteracoeslesoes.comentarios}}{{alteracoeslesoes.comentarios}}{{/alteracoeslesoes.comentarios}}{{^alteracoeslesoes.comentarios}}Não informado{{/alteracoeslesoes.comentarios}} <br>
+<strong>Data do Registro:</strong> {{#alteracoeslesoes.data_registro}}{{alteracoeslesoes.data_registro}}{{/alteracoeslesoes.data_registro}}{{^alteracoeslesoes.data_registro}}Não informado{{/alteracoeslesoes.data_registro}} <br>
+
+
+        </li>
+        <hr>
+    {{/usuarios}}
+</ul>
+
+{{/usuarios}}
 
 {{>partials/footer}}

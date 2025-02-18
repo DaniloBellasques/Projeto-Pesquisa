@@ -2,7 +2,7 @@ function saveData() {
     const fields = [
         "Osteoporose", "Renal", "Epilepsia", "Quimioterapia_Radioterapia", 
         "Hipotireoidismo", "Hepatite", "Antecedente_Oncologico", "Cardiopatia", 
-        "Hipertensao", "Reumatismo", "Hanseniase", "Cirurgia_MMII", "Marca_Passo", 
+        "Hipertensao", "Reumatismo", "Hanseniase", "Cirurgia_MMII", "Marca_passo", 
         "Hipotensao", "Insulina", "Dieta_Hidrica", "Injetavel", "Dieta_Alimentar", 
         "Via_Oral", "Taxa_Glicemica", "Alteracoes_Vasculares"
     ];
@@ -20,7 +20,7 @@ function submitForm() {
     const fields = [
         "Osteoporose", "Renal", "Epilepsia", "Quimioterapia_Radioterapia", 
         "Hipotireoidismo", "Hepatite", "Antecedente_Oncologico", "Cardiopatia", 
-        "Hipertensao", "Reumatismo", "Hanseniase", "Cirurgia_MMII", "Marca_Passo", 
+        "Hipertensao", "Reumatismo", "Hanseniase", "Cirurgia_MMII", "Marca_passo", 
         "Hipotensao", "Insulina", "Dieta_Hidrica", "Injetavel", "Dieta_Alimentar", 
         "Via_Oral", "Taxa_Glicemica", "Alteracoes_Vasculares"
     ];

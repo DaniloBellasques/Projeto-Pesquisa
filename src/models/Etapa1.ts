@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
 
+
 export interface Etapa1Instance extends Model {
     id_cliente: number;
     nome: string;
@@ -29,7 +30,6 @@ export const Etapa1 = sequelize.define<Etapa1Instance>('Etapa1', {
         type: DataTypes.STRING,
         allowNull: true
     },
-    
     endereco: {
         type: DataTypes.STRING,
         allowNull: true
@@ -49,7 +49,6 @@ export const Etapa1 = sequelize.define<Etapa1Instance>('Etapa1', {
     cep: {
         type: DataTypes.STRING,
         allowNull: true,
-        
     },
     tel_res: {
         type: DataTypes.STRING,
@@ -90,3 +89,4 @@ export const Etapa1 = sequelize.define<Etapa1Instance>('Etapa1', {
     tableName: 'cliente',
     timestamps: false
 });
+
