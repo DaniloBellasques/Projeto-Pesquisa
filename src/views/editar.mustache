@@ -1,0 +1,222 @@
+<h2>Editar Usuário</h2>
+
+<form action="/editar/{{usuario.id_cliente}}" method="POST">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" value="{{usuario.nome}}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="{{usuario.email}}" required>
+
+    <label for="endereco">Endereço:</label>
+    <input type="text" id="endereco" name="endereco" value="{{usuario.endereco}}" required>
+
+    <label for="bairro">Bairro:</label>
+    <input type="text" id="bairro" name="bairro" value="{{usuario.bairro}}" required>
+
+    <label for="cidade">Cidade:</label>
+    <input type="text" id="cidade" name="cidade" value="{{usuario.cidade}}" required>
+
+    <label for="estado">Estado:</label>
+    <input type="text" id="estado" name="estado" value="{{usuario.estado}}" required>
+
+    <label for="cep">CEP:</label>
+    <input type="text" id="cep" name="cep" value="{{usuario.cep}}" required>
+
+    <label for="tel_res">Tel. Residencial:</label>
+    <input type="text" id="tel_res" name="tel_res" value="{{usuario.tel_res}}" required>
+
+    <label for="telefone">Celular:</label>
+    <input type="text" id="telefone" name="telefone" value="{{usuario.telefone}}" required>
+
+    <label for="tel_emergencia">Tel. Emergência:</label>
+    <input type="text" id="tel_emergencia" name="tel_emergencia" value="{{usuario.tel_emergencia}}" required>
+
+    <label for="contato">Contato:</label>
+    <input type="text" id="contato" name="contato" value="{{usuario.contato}}" required>
+
+    <label for="data_nascimento">Data de Nascimento:</label>
+<input type="date" id="data_nascimento" name="data_nascimento" value="{{dataNascimentoFormatada}}" required>
+
+
+    <label for="profissao">Profissão:</label>
+    <input type="text" id="profissao" name="profissao" value="{{usuario.profissao}}" required>
+
+<label for="sexo">Sexo:</label>
+<select id="sexo" name="sexo" required>
+    <option value="Feminino" {{#isFeminino}}selected{{/isFeminino}}>Feminino</option>
+    <option value="Masculino" {{#isMasculino}}selected{{/isMasculino}}>Masculino</option>
+    <option value="Outro" {{#isOutro}}selected{{/isOutro}}>Outro</option>
+</select>
+
+
+<h3>Saúde e Hábitos (Etapa 2)</h3>
+
+<label for="queixa_principal">Queixa Principal:</label>
+<input type="text" id="queixa_principal" name="queixa_principal" value="{{dados_gerais.queixa_principal}}">
+
+<label for="frequenta_podologo">Frequenta Podólogo:</label>
+<select id="frequenta_podologo" name="frequenta_podologo">
+    <option value="Sim" {{#dados_gerais.frequenta_podologo}} {{#dados_gerais.frequenta_podologo}}selected{{/dados_gerais.frequenta_podologo}} {{/dados_gerais.frequenta_podologo}}>Sim</option>
+    <option value="Não" {{^dados_gerais.frequenta_podologo}}selected{{/dados_gerais.frequenta_podologo}}>Não</option>
+</select>
+
+<label for="uso_medicamento">Uso de Medicamentos:</label>
+<select id="uso_medicamento" name="uso_medicamento">
+    <option value="Sim" {{#dados_gerais.uso_medicamento}} {{#dados_gerais.uso_medicamento}}selected{{/dados_gerais.uso_medicamento}} {{/dados_gerais.uso_medicamento}}>Sim</option>
+    <option value="Não" {{^dados_gerais.uso_medicamento}}selected{{/dados_gerais.uso_medicamento}}>Não</option>
+</select>
+
+<label for="tipo_medicamento">Tipo de Medicamento:</label>
+<input type="text" id="tipo_medicamento" name="tipo_medicamento" value="{{dados_gerais.tipo_medicamento}}">
+
+<label for="alergico">Alérgico:</label>
+<select id="alergico" name="alergico">
+    <option value="Sim" {{#dados_gerais.alergico}} {{#dados_gerais.alergico}}selected{{/dados_gerais.alergico}} {{/dados_gerais.alergico}}>Sim</option>
+    <option value="Não" {{^dados_gerais.alergico}}selected{{/dados_gerais.alergico}}>Não</option>
+</select>
+
+<label for="alergia_substancia">Substâncias Alérgicas:</label>
+<input type="text" id="alergia_substancia" name="alergia_substancia" value="{{dados_gerais.alergia_substancia}}">
+
+<label for="posicao_trabalho">Posição no Trabalho:</label>
+<input type="text" id="posicao_trabalho" name="posicao_trabalho" value="{{dados_gerais.posicao_trabalho}}">
+
+<label for="duracao_trabalho">Duração do Trabalho:</label>
+<input type="text" id="duracao_trabalho" name="duracao_trabalho" value="{{dados_gerais.duracao_trabalho}}">
+
+<label for="tempo_em_pe">Tempo em Pé:</label>
+<input type="text" id="tempo_em_pe" name="tempo_em_pe" value="{{dados_gerais.tempo_em_pe}}">
+
+<label for="tempo_sentado">Tempo Sentado:</label>
+<input type="text" id="tempo_sentado" name="tempo_sentado" value="{{dados_gerais.tempo_sentado}}">
+
+<label for="tempo_caminhando">Tempo Caminhando:</label>
+<input type="text" id="tempo_caminhando" name="tempo_caminhando" value="{{dados_gerais.tempo_caminhando}}">
+
+<label for="numero_calcado">Número do Calçado:</label>
+<input type="text" id="numero_calcado" name="numero_calcado" value="{{dados_gerais.numero_calcado}}">
+
+<label for="tipo_calcado_diario">Tipo de Calçado Diário:</label>
+<input type="text" id="tipo_calcado_diario" name="tipo_calcado_diario" value="{{dados_gerais.tipo_calcado_diario}}">
+
+<label for="tipo_calcado_qual">Especificação do Calçado:</label>
+<input type="text" id="tipo_calcado_qual" name="tipo_calcado_qual" value="{{dados_gerais.tipo_calcado_qual}}">
+
+<label for="fumante">Fumante:</label>
+<select id="fumante" name="fumante">
+    <option value="Sim" {{#dados_gerais.fumante}} {{#dados_gerais.fumante}}selected{{/dados_gerais.fumante}} {{/dados_gerais.fumante}}>Sim</option>
+    <option value="Não" {{^dados_gerais.fumante}}selected{{/dados_gerais.fumante}}>Não</option>
+</select>
+
+<label for="pratica_atividade_fisica">Prática de Atividade Física:</label>
+<select id="pratica_atividade_fisica" name="pratica_atividade_fisica">
+    <option value="Sim" {{#dados_gerais.pratica_atividade_fisica}} {{#dados_gerais.pratica_atividade_fisica}}selected{{/dados_gerais.pratica_atividade_fisica}} {{/dados_gerais.pratica_atividade_fisica}}>Sim</option>
+    <option value="Não" {{^dados_gerais.pratica_atividade_fisica}}selected{{/dados_gerais.pratica_atividade_fisica}}>Não</option>
+</select>
+
+<label for="frequencia_atividade_fisica">Frequência da Atividade Física:</label>
+<input type="text" id="frequencia_atividade_fisica" name="frequencia_atividade_fisica" value="{{dados_gerais.frequencia_atividade_fisica}}">
+
+<label for="esporte_atividade">Esporte ou Atividade:</label>
+<input type="text" id="esporte_atividade" name="esporte_atividade" value="{{dados_gerais.esporte_atividade}}">
+
+<label for="tipo_calcado_esporte">Tipo de Calçado para Esporte:</label>
+<input type="text" id="tipo_calcado_esporte" name="tipo_calcado_esporte" value="{{dados_gerais.tipo_calcado_esporte}}">
+
+
+<h3>Dados Clínicos (Etapa 3)</h3>
+
+<label for="osteoporose">Osteoporose:</label>
+<select id="osteoporose" name="osteoporose">
+    <option value="Sim" {{#dadosclinicos.osteoporose}} selected {{/dadosclinicos.osteoporose}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.osteoporose}} selected {{/dadosclinicos.osteoporose}}>Não</option>
+</select>
+
+<label for="quimioterapia_radioterapia">Quimioterapia/Radioterapia:</label>
+<select id="quimioterapia_radioterapia" name="quimioterapia_radioterapia">
+    <option value="Sim" {{#dadosclinicos.quimioterapia_radioterapia}} selected {{/dadosclinicos.quimioterapia_radioterapia}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.quimioterapia_radioterapia}} selected {{/dadosclinicos.quimioterapia_radioterapia}}>Não</option>
+</select>
+
+<label for="antecedente_oncologico">Antecedente Oncológico:</label>
+<select id="antecedente_oncologico" name="antecedente_oncologico">
+    <option value="Sim" {{#dadosclinicos.antecedente_oncologico}} selected {{/dadosclinicos.antecedente_oncologico}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.antecedente_oncologico}} selected {{/dadosclinicos.antecedente_oncologico}}>Não</option>
+</select>
+
+<label for="reumatismo">Reumatismo:</label>
+<select id="reumatismo" name="reumatismo">
+    <option value="Sim" {{#dadosclinicos.reumatismo}} selected {{/dadosclinicos.reumatismo}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.reumatismo}} selected {{/dadosclinicos.reumatismo}}>Não</option>
+</select>
+
+<label for="marca_passo">Marca-passo:</label>
+<select id="marca_passo" name="marca_passo">
+    <option value="Sim" {{#dadosclinicos.marca_passo}} selected {{/dadosclinicos.marca_passo}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.marca_passo}} selected {{/dadosclinicos.marca_passo}}>Não</option>
+</select>
+
+<label for="hipotensao">Hipotensão:</label>
+<select id="hipotensao" name="hipotensao">
+    <option value="Sim" {{#dadosclinicos.hipotensao}} selected {{/dadosclinicos.hipotensao}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.hipotensao}} selected {{/dadosclinicos.hipotensao}}>Não</option>
+</select>
+
+<label for="injetavel">Uso de Injetável:</label>
+<select id="injetavel" name="injetavel">
+    <option value="Sim" {{#dadosclinicos.injetavel}} selected {{/dadosclinicos.injetavel}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.injetavel}} selected {{/dadosclinicos.injetavel}}>Não</option>
+</select>
+
+<label for="renal">Problemas Renais:</label>
+<select id="renal" name="renal">
+    <option value="Sim" {{#dadosclinicos.renal}} selected {{/dadosclinicos.renal}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.renal}} selected {{/dadosclinicos.renal}}>Não</option>
+</select>
+
+<label for="hipotireoidismo">Hipotireoidismo:</label>
+<select id="hipotireoidismo" name="hipotireoidismo">
+    <option value="Sim" {{#dadosclinicos.hipotireoidismo}} selected {{/dadosclinicos.hipotireoidismo}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.hipotireoidismo}} selected {{/dadosclinicos.hipotireoidismo}}>Não</option>
+</select>
+
+<label for="cardiopatia">Cardiopatia:</label>
+<select id="cardiopatia" name="cardiopatia">
+    <option value="Sim" {{#dadosclinicos.cardiopatia}} selected {{/dadosclinicos.cardiopatia}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.cardiopatia}} selected {{/dadosclinicos.cardiopatia}}>Não</option>
+</select>
+
+<label for="hanseniase">Hanseníase:</label>
+<select id="hanseniase" name="hanseniase">
+    <option value="Sim" {{#dadosclinicos.hanseniase}} selected {{/dadosclinicos.hanseniase}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.hanseniase}} selected {{/dadosclinicos.hanseniase}}>Não</option>
+</select>
+
+<label for="epilepsia">Epilepsia:</label>
+<select id="epilepsia" name="epilepsia">
+    <option value="Sim" {{#dadosclinicos.epilepsia}} selected {{/dadosclinicos.epilepsia}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.epilepsia}} selected {{/dadosclinicos.epilepsia}}>Não</option>
+</select>
+
+<label for="hepatite">Hepatite:</label>
+<select id="hepatite" name="hepatite">
+    <option value="Sim" {{#dadosclinicos.hepatite}} selected {{/dadosclinicos.hepatite}}>Sim</option>
+    <option value="Não" {{^dadosclinicos.hepatite}} selected {{/dadosclinicos.hepatite}}>Não</option>
+</select>
+
+<label for="taxa_glicemica">Taxa Glicêmica:</label>
+<input type="number" step="0.01" id="taxa_glicemica" name="taxa_glicemica" value="{{dadosclinicos.taxa_glicemica}}">
+
+
+
+
+
+
+
+
+
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+<a href="/pesquisa">Voltar</a>
+

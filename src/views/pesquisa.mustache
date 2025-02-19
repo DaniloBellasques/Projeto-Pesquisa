@@ -1,10 +1,233 @@
 {{>partials/header}}
+<style>
+/* Reset de estilos */
+/* Resetando estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Corpo da página */
+body {
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+/* Container principal */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Título da página */
+h2 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Estilo do formulário */
+form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+form input {
+    width: 70%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: border 0.3s;
+}
+
+form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+form button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: linear-gradient(90deg, #0056b3, #003f7f);
+}
+
+/* Mensagem de erro ou aviso */
+p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #dc3545;
+}
+
+/* Lista de resultados */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilo de cada item da lista */
+li {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilizando as seções */
+h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #007bff;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+/* Estruturando os dados em duas colunas */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.info-item {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.info-item strong {
+    color: #333;
+}
+
+/* Separador */
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form input {
+        width: 100%;
+    }
+
+    form button {
+        width: 100%;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+</style>
 
 <h2>Pesquisa de Usuário</h2>
 <form action="/pesquisa" method="GET">
     <input type="text" name="termo" placeholder="Digite o ID ou Nome">
     <button type="submit">Buscar</button>
 </form>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>CEP</th>
+            <th>Tel. Residencial</th>
+            <th>Celular</th>
+            <th>Tel. Emergência</th>
+            <th>Contato</th>
+            <th>Data de Nascimento</th>
+            <th>Profissão</th>
+            <th>Sexo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#usuarios}}
+        <tr>
+            <td>{{id_cliente}}</td>
+            <td>{{nome}}</td>
+            <td>{{email}}</td>
+            <td>{{endereco}}</td>
+            <td>{{bairro}}</td>
+            <td>{{cidade}}</td>
+            <td>{{estado}}</td>
+            <td>{{cep}}</td>
+            <td>{{tel_res}}</td>
+            <td>{{telefone}}</td>
+            <td>{{tel_emergencia}}</td>
+            <td>{{contato}}</td>
+            <td>{{data_nascimento}}</td>
+            <td>{{profissao}}</td>
+            <td>{{sexo}}</td>
+            <td>
+                <a href="/editar/{{id_cliente}}" class="btn btn-warning">Editar</a>
+            </td>
+        </tr>
+        {{/usuarios}}
+    </tbody>
+</table>
+
+
 
 {{#mensagem}}
     <p>{{mensagem}}</p>
@@ -14,9 +237,11 @@
     <h2>Resultados da Pesquisa</h2>
 
 <ul>
-    {{#usuarios}}
+   {{#usuarios}}
+    
+
         <li>
-            <h3>Dados Pessoais (Etapa 1)</h3>
+            
             <h3>Dados Pessoais (Etapa 1)</h3>
 <strong>ID:</strong> {{#id_cliente}}{{id_cliente}}{{/id_cliente}}{{^id_cliente}}Não informado{{/id_cliente}} <br>
 <strong>Nome:</strong> {{#nome}}{{nome}}{{/nome}}{{^nome}}Não informado{{/nome}} <br>
@@ -35,7 +260,7 @@
 <strong>Sexo:</strong> {{#sexo}}{{sexo}}{{/sexo}}{{^sexo}}Não informado{{/sexo}} <br>
 
 
-            <h3>Saúde e Hábitos (Etapa 2)</h3>
+            
 <h3>Saúde e Hábitos (Etapa 2)</h3>
 <strong>Queixa Principal:</strong> {{#dados_gerais.queixa_principal}}{{dados_gerais.queixa_principal}}{{/dados_gerais.queixa_principal}}{{^dados_gerais.queixa_principal}}Não informado{{/dados_gerais.queixa_principal}} <br>
 <strong>Frequenta Podólogo:</strong> {{#dados_gerais.frequenta_podologo}}{{dados_gerais.frequenta_podologo}}{{/dados_gerais.frequenta_podologo}}{{^dados_gerais.frequenta_podologo}}Não informado{{/dados_gerais.frequenta_podologo}} <br>

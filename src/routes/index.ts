@@ -1,7 +1,9 @@
 import { Router } from 'express';
+
 import { sequelize } from '../instances/mysql';
 import * as usuarioController from '../controllers/usuarioController';
 import '../models/associacao'; // Garante que as associações sejam carregadas antes do sync
+import { Etapa1 } from '../models/Etapa1';
 
 sequelize.sync({ alter: true }) // `force: true` recria as tabelas, cuidado!
     .then(() => console.log('Banco de dados sincronizado com sucesso!'))
@@ -35,5 +37,13 @@ router.post('/submit', usuarioController.submit);
 
 // Rota de pesquisa
 router.get('/pesquisa', usuarioController.pesquisarUsuario);
+
+router.get('/editar/:id', usuarioController.editarUsuario);
+
+// Rota para processar a edição e salvar no banco
+router.post('/editar/:id', usuarioController.salvarEdicaoUsuario);
+
+
+
 
 export default router;

@@ -1,11 +1,13 @@
 // src/controllers/usuarioController.ts
 import { Request, Response } from 'express';
-import { Etapa1 } from '../models/Etapa1';
-import { Etapa2 } from '../models/etapa2';
-import { Etapa3 } from '../models/etapa3';
-import { Etapa4 } from '../models/etapa4';
-import { Etapa5 } from '../models/etapa5';
-import { Etapa6 } from '../models/etapa6';
+
+import { Etapa1, Etapa1Instance } from "../models/Etapa1";
+import { Etapa2, Etapa2Instance } from "../models/etapa2";
+import { Etapa3, Etapa3Instance } from "../models/etapa3";
+import { Etapa4, Etapa4Instance } from "../models/etapa4";
+import { Etapa5, Etapa5Instance } from "../models/etapa5";
+import { Etapa6, Etapa6Instance } from "../models/etapa6";
+
 import { Op } from 'sequelize'; // Importa o operador correto
 
 
@@ -627,6 +629,159 @@ export const detalhesUsuario = async (req: Request, res: Response) => {
         res.status(500).send('Erro interno');
     }
 };
+
+
+
+
+
+import moment from "moment"; // Adicione moment para formatar a data
+
+export const editarUsuario = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+
+        // Buscar usuário e incluir as Etapas 2 e 3
+        const usuario = await Etapa1.findByPk(id, {
+            include: [
+                { model: Etapa2, as: 'dados_gerais' },
+                { model: Etapa3, as: 'dadosclinicos' } // 🔥 Adicionando a Etapa 3
+            ]
+        });
+
+        if (!usuario) {
+            res.status(404).json({ message: "Usuário não encontrado" });
+            return;
+        }
+
+        // Verifica se os dados existem, senão inicializa como vazio
+        const dados_gerais = usuario.get('dados_gerais') || {}; 
+        const dadosclinicos = usuario.get('dadosclinicos') || {}; // 🔥 Agora carrega também a Etapa 3
+
+        // Formatar data de nascimento para exibição no input
+        const dataNascimentoFormatada = usuario.data_nascimento
+            ? moment(usuario.data_nascimento).format("YYYY-MM-DD")
+            : "";
+
+        // Renderizar a página de edição com todas as etapas carregadas
+        res.render("editar", {
+            usuario,
+            dados_gerais,  // 🔥 Dados da Etapa 2
+            dadosclinicos, // 🔥 Dados da Etapa 3 agora são passados para o Mustache
+            dataNascimentoFormatada,
+            isFeminino: usuario.sexo === "Feminino",
+            isMasculino: usuario.sexo === "Masculino",
+            isOutro: usuario.sexo === "Outro"
+        });
+
+    } catch (error) {
+        console.error("Erro ao buscar usuário para edição:", error);
+        res.status(500).json({ message: "Erro interno no servidor" });
+    }
+};
+
+
+
+
+
+
+export const salvarEdicaoUsuario = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const {
+            // Dados da Etapa 1
+            nome, email, endereco, bairro, cidade, estado, cep, tel_res, telefone,
+            tel_emergencia, contato, data_nascimento, profissao, sexo,
+
+            // Dados da Etapa 2
+            queixa_principal, frequenta_podologo, frequencia_visita_podologo,
+            uso_medicamento, tipo_medicamento, alergico, alergia_substancia,
+            posicao_trabalho, duracao_trabalho, tempo_em_pe, tempo_sentado,
+            tempo_caminhando, numero_calcado, tipo_calcado_diario, tipo_calcado_qual,
+            fumante, menstruacao, gestante, amamentando, dum,
+            pratica_atividade_fisica, frequencia_atividade_fisica, esporte_atividade,
+            tipo_calcado_esporte,
+
+            // 🔥 **Novos Dados da Etapa 3**
+            osteoporose, quimioterapia_radioterapia, antecedente_oncologico,
+            reumatismo, marca_passo, hipotensao, injetavel, renal, hipotireoidismo,
+            cardiopatia, hanseniase, epilepsia, hepatite, hipertensao,
+            cirurgia_mmii, alteracoes_vasculares, insulina, dieta_hidrica,
+            dieta_alimentar, via_oral, taxa_glicemica
+        } = req.body;
+
+        // 🔥 **1. Atualizar Etapa 1 (Dados Pessoais)**
+        const usuario = await Etapa1.findByPk(id);
+        if (!usuario) {
+            res.status(404).json({ message: "Usuário não encontrado" });
+            return;
+        }
+        await usuario.update({
+            nome, email, endereco, bairro, cidade, estado, cep, tel_res, telefone,
+            tel_emergencia, contato, data_nascimento, profissao, sexo
+        });
+
+        // 🔥 **2. Atualizar ou Criar Etapa 2 (Saúde e Hábitos)**
+        let dados_gerais = await Etapa2.findOne({ where: { id_cliente: id } });
+        if (dados_gerais) {
+            await dados_gerais.update({
+                queixa_principal, frequenta_podologo, frequencia_visita_podologo,
+                uso_medicamento, tipo_medicamento, alergico, alergia_substancia,
+                posicao_trabalho, duracao_trabalho, tempo_em_pe, tempo_sentado,
+                tempo_caminhando, numero_calcado, tipo_calcado_diario, tipo_calcado_qual,
+                fumante, menstruacao, gestante, amamentando, dum,
+                pratica_atividade_fisica, frequencia_atividade_fisica, esporte_atividade,
+                tipo_calcado_esporte
+            });
+        } else {
+            await Etapa2.create({
+                id_cliente: id,
+                queixa_principal, frequenta_podologo, frequencia_visita_podologo,
+                uso_medicamento, tipo_medicamento, alergico, alergia_substancia,
+                posicao_trabalho, duracao_trabalho, tempo_em_pe, tempo_sentado,
+                tempo_caminhando, numero_calcado, tipo_calcado_diario, tipo_calcado_qual,
+                fumante, menstruacao, gestante, amamentando, dum,
+                pratica_atividade_fisica, frequencia_atividade_fisica, esporte_atividade,
+                tipo_calcado_esporte
+            });
+        }
+
+        // 🔥 **3. Atualizar ou Criar Etapa 3 (Dados Clínicos)**
+        let dadosclinicos = await Etapa3.findOne({ where: { id_cliente: id } });
+        if (dadosclinicos) {
+            console.log("Atualizando Etapa 3 para ID:", id);
+            await dadosclinicos.update({
+                osteoporose, quimioterapia_radioterapia, antecedente_oncologico,
+                reumatismo, marca_passo, hipotensao, injetavel, renal, hipotireoidismo,
+                cardiopatia, hanseniase, epilepsia, hepatite, hipertensao,
+                cirurgia_mmii, alteracoes_vasculares, insulina, dieta_hidrica,
+                dieta_alimentar, via_oral, taxa_glicemica
+            });
+        } else {
+            console.log("Criando novo registro para Etapa 3 para ID:", id);
+            await Etapa3.create({
+                id_cliente: id,
+                osteoporose, quimioterapia_radioterapia, antecedente_oncologico,
+                reumatismo, marca_passo, hipotensao, injetavel, renal, hipotireoidismo,
+                cardiopatia, hanseniase, epilepsia, hepatite, hipertensao,
+                cirurgia_mmii, alteracoes_vasculares, insulina, dieta_hidrica,
+                dieta_alimentar, via_oral, taxa_glicemica
+            });
+        }
+
+        res.redirect("/pesquisa");
+    } catch (error) {
+        console.error("Erro ao salvar usuário editado:", error);
+        res.status(500).json({ message: "Erro interno no servidor" });
+    }
+};
+
+
+
+
+
+
+
+
 
 
 
